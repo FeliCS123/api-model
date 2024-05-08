@@ -1,3 +1,4 @@
+from unittest import TestCase
 import joblib
 import pandas as pd 
 from sklearn.base import ClassifierMixin
@@ -34,3 +35,9 @@ df = clean_data(df)
 model = train_model(df)
 joblib.dump(model, "model.pkl")
 
+from train import clean_data
+class TestTrain(TestCase):
+    def test_clean_data(self):
+        df=pd.DataFrame({'survived ': [1,0,1], 'pclass': [1,2,3],'sex':['male','female','male'],'age': [20,30,40] })
+        result_df=clean_data(df)
+        
